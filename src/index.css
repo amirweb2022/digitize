@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: IRAN;
+  src: url("../public/font/IRANSans.ttf");
+}
+
+*,
+*:focus,
+*:active {
+  direction: rtl;
+  font-family: IRAN;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+body {
+  background: #f4f4f4;
+}
