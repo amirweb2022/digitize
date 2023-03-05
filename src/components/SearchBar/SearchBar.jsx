@@ -1,6 +1,6 @@
 const SearchBar = () => {
   return (
-    <div className="flex justify-start items-center bg-gray-200 rounded-md h-12 px-4 md:w-1/3 lg:w-1/2 xl:w-1/3">
+    <div className="flex justify-start items-center bg-gray-200 rounded-md h-12 w-full px-4 md:w-1/3 lg:w-1/2 xl:w-1/3">
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -73,7 +73,7 @@ const Navigation = () => {
   return (
     <>
       {/* navigation in mobile size */}
-      <header className="fixed bottom-0 bg-white rounded-tr-2xl rounded-tl-2xl shadow-stone-400 shadow-md px-3 py-4 w-full md:hidden">
+      <header className="fixed bottom-0 dark:bg-slate-800 transition-all duration-200 bg-white rounded-tr-2xl rounded-tl-2xl shadow-slate-600 shadow-lg px-3 py-4 w-full md:hidden">
         <nav>
           <ul className="flex justify-around items-center">
             {nav__link.map((nav, index) => {
@@ -83,7 +83,7 @@ const Navigation = () => {
                     to={nav.to}
                     className={(navClass) =>
                       navClass.isActive
-                        ? "flex justify-center items-center text-slate-800 font-bold"
+                        ? "flex justify-center items-center text-slate-800 font-bold dark:text-orange-400"
                         : "flex justify-center items-center text-gray-500 text-lg"
                     }
                   >
@@ -105,14 +105,14 @@ const Navigation = () => {
       </header>
       {/* navigation in desctop */}
       <header className="sticky top-0 w-full hidden md:block">
-        <div className="2xl:container 2xl:max-w-screen-2xl shadow-md bg-stone-50 mx-auto h-full px-5 py-3 flex justify-between items-center">
+        <div className="2xl:container 2xl:max-w-screen-2xl shadow-md dark:shadow-slate-500 bg-stone-50 dark:bg-slate-800 transition-all duration-200 mx-auto h-full px-5 py-3 flex justify-between items-center">
           <div>
             <ul className="flex justify-center items-center gap-x-5">
               <li>
                 <NavLink to="/">
                   <h2 className="text-2xl font-bold">
                     <span className="text-orange-600">دیجی </span>
-                    <span className="text-slate-800">تایز</span>
+                    <span className="text-slate-800 dark:text-gray-300">تایز</span>
                   </h2>
                 </NavLink>
               </li>
@@ -123,8 +123,8 @@ const Navigation = () => {
                       to={nav.to}
                       className={(navClass) =>
                         navClass.isActive
-                          ? "inline-block bg-orange-500 text-white py-2 px-3 rounded-md font-bold"
-                          : "inline-block hover:bg-orange-500 text-slate-800 hover:text-white hover:py-1 hover:px-3 rounded-md duration-150 transition-all"
+                          ? "inline-block bg-orange-600 text-white py-2 px-3 rounded-md font-bold"
+                          : "inline-block hover:bg-orange-600 text-slate-800 dark:text-gray-200 hover:text-white hover:py-1 hover:px-3 rounded-md duration-150 transition-all"
                       }
                     >
                       {nav.text}

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 const Header = ({ children, text }) => {
   return (
-    <div className="w-full flex justify-center items-center px-4 py-2 md:hidden">
+    <div className="w-full flex justify-center items-center px-4 dark:bg-slate-800 transition-all duration-200 py-2 md:hidden">
       <div className="flex justify-between items-center w-full">
         {/* logo */}
         <div>
@@ -38,11 +38,11 @@ const Header = ({ children, text }) => {
           </NavLink>
         </div>
         {/* title */}
-        <p className="text-slate-800 text-lg font-bold">{text}</p>
+        <p className="text-slate-800 dark:text-gray-300 text-lg font-bold">{text}</p>
         {/* button search OR button back */}
-        <button className="bg-white rounded-md p-2 shadow-lg">
+        <div className="bg-white rounded-md p-2 shadow-lg flex justify-center items-center">
           {children}
-        </button>
+        </div>
       </div>
     </div>
   );
