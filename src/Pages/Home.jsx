@@ -3,6 +3,7 @@ import DarkMode from "../components/DarkMode/DarkMode";
 import Header from "../components/Header/Header";
 import Popup from "../components/Popup/Popup";
 import ButtonSortAndFilter from "../common/ButtonSortAndFilter";
+import FilterPanel from "../components/FilterPanel/FilterPanel";
 import Layout from "../Layout/Layout";
 const Home = () => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
@@ -121,6 +122,24 @@ const Home = () => {
             </ButtonSortAndFilter>
           </div>
 
+          {/* main data */}
+          <div className="w-full px-5 dark:bg-slate-800 hidden md:flex justify-between items-start">
+            {/* filter panel */}
+            <div className="w-1/6 h-full py-5 sticky top-16">
+              <FilterPanel
+                cuisines={cuisines}
+                changeChecked={handleChangeChecked}
+                selectedPrice={selectedPrice}
+                changePrice={handleChangePrice}
+              />
+            </div>
+            <div className="w-5/6 h-screen flex flex-col justify-start items-center py-5 pr-5">
+              {/* sort */}
+              <div className="w-full h-6 bg-red-400">sort</div>
+              {/* productList */}
+              <div className="w-full bg-blue-300 mt-4">product</div>
+            </div>
+          </div>
         </main>
       </Layout>
     </>

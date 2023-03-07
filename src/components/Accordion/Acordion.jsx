@@ -12,7 +12,7 @@ function MaterialAccordion({ cuisines, changeChecked , selectedPrice , changePri
     setExpanded(isExpanded ? panel : false);
   };
   return (
-    <div>
+    <div className="w-full text-slate-800">
       <Accordion
         style={{ background: "none", boxShadow: "none" }}
         expanded={expanded === 'panel1'} onChange={handleChange('panel1')}
@@ -23,7 +23,7 @@ function MaterialAccordion({ cuisines, changeChecked , selectedPrice , changePri
           id="panel1a-header"
           className="dark:text-white"
         >
-          <Typography style={{ fontWeight: "bold" }}>برند محصول</Typography>
+          <p style={{ fontWeight: "bold" }}>برند محصول</p>
         </AccordionSummary>
         <AccordionDetails className="dark:text-white -mt-5 -mr-4 text-slate-800">
           <Typography>
@@ -47,7 +47,7 @@ function MaterialAccordion({ cuisines, changeChecked , selectedPrice , changePri
           id="panel1a-header"
           className="dark:text-white"
         >
-          <Typography style={{ fontWeight: "bold" }}>رنگ محصول</Typography>
+          <p style={{ fontWeight: "bold"}}>رنگ محصول</p>
         </AccordionSummary>
         <AccordionDetails className="dark:text-white -mt-5 -mr-4 text-slate-800">
           <Typography>
@@ -62,7 +62,6 @@ function MaterialAccordion({ cuisines, changeChecked , selectedPrice , changePri
         </AccordionDetails>
       </Accordion>
       <Accordion
-        className="w-screen"
         style={{ background: "none", boxShadow: "none" }}
         expanded={expanded === 'panel3'} onChange={handleChange('panel3')}
       >
@@ -72,7 +71,7 @@ function MaterialAccordion({ cuisines, changeChecked , selectedPrice , changePri
           id="panel1a-header"
           className="dark:text-white"
         >
-          <Typography style={{ fontWeight: "bold" }}>محدوده قیمت</Typography>
+          <p style={{ fontWeight: "bold" }}>محدوده قیمت</p>
         </AccordionSummary>
         <AccordionDetails className="dark:text-white -mt-5 -mr-4 text-slate-800">
             <SliderProton value={selectedPrice} changePrice={changePrice} />
