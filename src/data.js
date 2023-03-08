@@ -30,7 +30,7 @@ export const products = [
     {
         id: 1,
         persionName: "آیفون ۱۳ مدل 128 گیگابایت",
-        colors: ['bg-indigo-600', 'bg-slate-700', 'bg-orange-400', 'bg-slate-200', 'bg-stone-50'],
+        colors: ['indigo-600', 'slate-700', 'orange-400', 'slate-200', 'stone-50'],
         price: 28250000,
         brand: 'apple',
         category: 'تلفن همراه',
@@ -53,7 +53,7 @@ export const products = [
     {
         id: 2,
         persionName: "آیفون ۱۳ مدل 258 گیگابایت",
-        colors: ['bg-indigo-600', 'bg-slate-700', 'bg-orange-400', 'bg-slate-200', 'bg-stone-50'],
+        colors: ['indigo-600', 'slate-700', 'orange-400', 'slate-200', 'stone-50'],
         price: 33250000,
         brand: 'apple',
         category: 'تلفن همراه',
@@ -76,7 +76,7 @@ export const products = [
     {
         id: 3,
         persionName: "آیفون ۱۴ مدل 128 گیگابایت",
-        colors: ['bg-indigo-600', 'bg-slate-700', 'bg-orange-400', 'bg-slate-200', 'bg-stone-50'],
+        colors: ['indigo-600', 'slate-700', 'orange-400', 'slate-200', 'stone-50'],
         price: 43250000,
         brand: 'apple',
         category: 'تلفن همراه',
@@ -99,7 +99,7 @@ export const products = [
     {
         id: 4,
         persionName: "آیفون ۱۴ مدل 258 گیگابایت",
-        colors: ['bg-indigo-600', 'bg-slate-700', 'bg-orange-400', 'bg-slate-200', 'bg-stone-50'],
+        colors: ['indigo-600', 'slate-700', 'orange-400', 'slate-200', 'stone-50'],
         price: 53250000,
         brand: 'apple',
         category: 'تلفن همراه',
@@ -122,7 +122,7 @@ export const products = [
     {
         id: 5,
         persionName: "سامسونگ مدل A71 128 گیگابایت",
-        colors: ['bg-indigo-600', 'bg-slate-700', 'bg-slate-200', 'bg-stone-50'],
+        colors: ['indigo-600', 'slate-700', 'slate-200', 'stone-50'],
         price: 33250000,
         brand: 'samsung',
         category: 'تلفن همراه',
@@ -145,7 +145,7 @@ export const products = [
     {
         id: 6,
         persionName: "سامسونگ مدل S23 Ultra 258 گیگابایت",
-        colors: ['bg-slate-700', 'bg-slate-200', 'bg-stone-50'],
+        colors: ['slate-700', 'slate-200', 'stone-50'],
         price: 58250000,
         brand: 'samsung',
         category: 'تلفن همراه',
@@ -168,7 +168,7 @@ export const products = [
     {
         id: 7,
         persionName: "شائومی مدل 11T Pro 258 گیگابایت",
-        colors: ['bg-indigo-600', 'bg-slate-700', 'bg-orange-400', 'bg-slate-200', 'bg-stone-50'],
+        colors: ['indigo-600', 'slate-700', 'orange-400', 'slate-200', 'stone-50'],
         price: 16250000,
         brand: 'xiaomi',
         category: 'تلفن همراه',
@@ -191,7 +191,7 @@ export const products = [
     {
         id: 8,
         persionName: "گوشی شیائومی Mi 11 lite",
-        colors: ['bg-slate-700', 'bg-orange-400', 'bg-slate-200', 'bg-orange-400'],
+        colors: ['slate-700', 'orange-400', 'slate-200', 'orange-400'],
         price: 10050000,
         brand: 'xiaomi',
         category: 'تلفن همراه',
@@ -214,7 +214,7 @@ export const products = [
     {
         id: 9,
         persionName: "گوشی شیائومی Redmi Note 10 Pro",
-        colors: ['bg-slate-700', 'bg-orange-400', 'bg-slate-200'],
+        colors: ['slate-700', 'orange-400', 'slate-200'],
         price: 8999000,
         brand: 'xiaomi',
         category: 'تلفن همراه',
@@ -237,7 +237,7 @@ export const products = [
     {
         id: 10,
         persionName: "گوشی شیائومی Mi 10 T",
-        colors: ['bg-slate-700', 'bg-orange-400', 'bg-slate-200'],
+        colors: ['slate-700', 'orange-400', 'slate-200'],
         price: 10770000,
         brand: 'xiaomi',
         category: 'تلفن همراه',

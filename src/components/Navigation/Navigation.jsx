@@ -104,7 +104,7 @@ const Navigation = () => {
         </nav>
       </header>
       {/* navigation in desctop */}
-      <header className="sticky top-0 w-full hidden md:block">
+      <header className="sticky top-0 w-full hidden md:block z-30">
         <div className="2xl:container 2xl:max-w-screen-2xl shadow-md dark:shadow-slate-500 bg-stone-50 dark:bg-slate-800 transition-all duration-200 mx-auto h-full px-5 py-3 flex justify-between items-center">
           <div>
             <ul className="flex justify-center items-center gap-x-5">
@@ -112,7 +112,9 @@ const Navigation = () => {
                 <NavLink to="/">
                   <h2 className="text-2xl font-bold">
                     <span className="text-orange-600">دیجی </span>
-                    <span className="text-slate-800 dark:text-gray-300">تایز</span>
+                    <span className="text-slate-800 dark:text-gray-300">
+                      تایز
+                    </span>
                   </h2>
                 </NavLink>
               </li>

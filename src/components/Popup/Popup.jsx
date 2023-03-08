@@ -38,7 +38,7 @@ const Popup = ({
           className="bg-white dark:bg-slate-800 dark:text-white rounded-tr-xl fixed bottom-0
         shadow-lg shadow-slate-6 rounded-tl-xl px-4 py-4 w-full flex justify-start items-start flex-col md:hidden"
         >
-          <h3 className="text-lg font-bold text-orange-500">فیلتر</h3>
+          <h3 className="text-lg font-bold text-orange-500 mr-2">فیلتر</h3>
           <Accordion
             cuisines={cuisines}
             changeChecked={changeChecked}
@@ -70,7 +70,7 @@ const Popup = ({
           className="bg-white dark:bg-slate-800 dark:text-white rounded-tr-xl fixed bottom-0
         shadow-lg shadow-slate-6 rounded-tl-xl px-4 py-4 w-full flex justify-start items-start flex-col md:hidden"
         >
-          <h3 className="text-lg font-bold text-orange-500">مرتب سازی</h3>
+          <h3 className="text-lg font-bold text-orange-500 mb-3">مرتب سازی</h3>
           <SortToggle
             options={sortList}
             value={selectedSortValue}

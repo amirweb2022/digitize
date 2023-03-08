@@ -15,7 +15,7 @@ const SortToggle = ({ options, value, selectToggle }) => {
         <ToggleButton
           className={`w-full`}
           style={{
-            marginTop: "10px",
+            
             background: "#FF755C",
             border: "none",
             color: "#fff",
@@ -26,7 +26,7 @@ const SortToggle = ({ options, value, selectToggle }) => {
           key={id}
           value={value}
         >
-          {label}
+          <p>{label}</p>
         </ToggleButton>
       ))}
     </ToggleButtonGroup>

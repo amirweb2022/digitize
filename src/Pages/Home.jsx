@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DarkMode from "../components/DarkMode/DarkMode";
 import Header from "../components/Header/Header";
 import Popup from "../components/Popup/Popup";
 import ButtonSortAndFilter from "../common/ButtonSortAndFilter";
 import FilterPanel from "../components/FilterPanel/FilterPanel";
+import SortProduct from "../components/SortProduct/SortProduct";
 import Layout from "../Layout/Layout";
+import ProductList from "../components/ProductList/ProductList";
+import { products } from "../data";
 const Home = () => {
+  const [productsData, setProductsData] = useState([]);
+
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
   const [isOpenFilter, setIsOpenFilter] = useState(false);
@@ -40,6 +45,10 @@ const Home = () => {
   const handleChangePrice = (event, value) => {
     setSelectedPrice(value);
   };
+
+  useEffect(() => {
+    setProductsData(products);
+  }, []);
 
   return (
     <>
@@ -79,9 +88,9 @@ const Home = () => {
         {/* dark mode */}
         <DarkMode />
 
-        <main className="dark:bg-slate-800 dark:text-white transition-all duration-200">
+        <main className="dark:bg-slate-800 dark:text-white transition-all duration-200 2xl:container 2xl:max-w-screen-2xl mx-auto">
           {/* button filter and sort in mobile size */}
-          <div className="w-full md:hidden flex justify-around items-center p-2">
+          <div className="w-full md:hidden flex gap-x-2 justify-center items-center py-2 px-4">
             <ButtonSortAndFilter
               text="مرتب سازی"
               onClick={() => setIsOpenSort(true)}
@@ -123,9 +132,9 @@ const Home = () => {
           </div>
 
           {/* main data */}
-          <div className="w-full px-5 dark:bg-slate-800 hidden md:flex justify-between items-start">
+          <div className="w-full flex justify-center items-center md:px-5 2xl:px-3 dark:bg-slate-800 md:flex md:justify-between md:items-start">
             {/* filter panel */}
-            <div className="w-1/6 h-full py-5 sticky top-16">
+            <div className="w-1/6 h-full py-5 sticky top-16 hidden md:block">
               <FilterPanel
                 cuisines={cuisines}
                 changeChecked={handleChangeChecked}
@@ -133,11 +142,14 @@ const Home = () => {
                 changePrice={handleChangePrice}
               />
             </div>
-            <div className="w-5/6 h-screen flex flex-col justify-start items-center py-5 pr-5">
+            <div className="w-full md:w-5/6 h-full flex justify-center md:flex-col md:justify-start items-center md:py-5 md:pr-5">
               {/* sort */}
-              <div className="w-full h-6 bg-red-400">sort</div>
+              <SortProduct
+                selectedSortValue={selectedSortValue}
+                selectSortValue={handleSelectSortValue}
+              />
               {/* productList */}
-              <div className="w-full bg-blue-300 mt-4">product</div>
+                <ProductList data={productsData}/>
             </div>
           </div>
         </main>
