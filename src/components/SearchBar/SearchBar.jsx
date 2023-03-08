@@ -1,4 +1,4 @@
-const SearchBar = () => {
+const SearchBar = ({ value, changeInput }) => {
   return (
     <div className="flex justify-start items-center bg-gray-200 rounded-md h-12 w-full px-4 md:w-1/3 lg:w-1/2 xl:w-1/3">
       <div>
@@ -20,6 +20,8 @@ const SearchBar = () => {
           type="text"
           className="h-full focus:outline-none px-3 w-full text-sm text-slate-800 bg-transparent"
           placeholder="جستجوی نام محصول,نام برند,نام مدل و.."
+          value={value}
+          onChange={changeInput}
         />
       </div>
     </div>

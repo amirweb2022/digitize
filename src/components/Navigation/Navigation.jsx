@@ -69,7 +69,7 @@ const nav__link = [
   },
 ];
 
-const Navigation = () => {
+const Navigation = ({ value, changeInput }) => {
   return (
     <>
       {/* navigation in mobile size */}
@@ -136,7 +136,7 @@ const Navigation = () => {
               })}
             </ul>
           </div>
-          <SearchBar />
+          <SearchBar value={value} changeInput={changeInput} />
         </div>
       </header>
     </>

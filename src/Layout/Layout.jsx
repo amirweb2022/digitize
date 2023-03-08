@@ -1,8 +1,8 @@
 import Navigation from "../components/Navigation/Navigation";
-const Layout = ({ children }) => {
+const Layout = ({ children, value, changeInput }) => {
   return (
     <>
-      <Navigation />
+      <Navigation value={value} changeInput={changeInput} />
       {children}
       <footer>Footer</footer>
     </>

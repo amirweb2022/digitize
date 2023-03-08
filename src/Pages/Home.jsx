@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import DarkMode from "../components/DarkMode/DarkMode";
-import Header from "../components/Header/Header";
+import Heade from "../components/Heade/Heade";
 import Popup from "../components/Popup/Popup";
 import ButtonSortAndFilter from "../common/ButtonSortAndFilter";
 import FilterPanel from "../components/FilterPanel/FilterPanel";
 import SortProduct from "../components/SortProduct/SortProduct";
 import Layout from "../Layout/Layout";
 import ProductList from "../components/ProductList/ProductList";
+import baner from "../assets/images/iphone-14-1-d.jpg"
 import { products } from "../data";
 const Home = () => {
   const [productsData, setProductsData] = useState([]);
-
+  const [resultsFound, setResultsFound] = useState(true);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
   const [isOpenFilter, setIsOpenFilter] = useState(false);
@@ -18,6 +19,7 @@ const Home = () => {
   const [isOpenSort, setIsOpenSort] = useState(false);
 
   const [selectedSortValue, setSelectedSortValue] = useState(null);
+  const [searchInput, setSearchInput] = useState("");
 
   const [selectedPrice, setSelectedPrice] = useState([1900000, 59312000]);
   const [cuisines, setCuisines] = useState([
@@ -46,9 +48,61 @@ const Home = () => {
     setSelectedPrice(value);
   };
 
+  const applyFilters = () => {
+    let updatedList = products;
+    // Search Filter
+    if (searchInput) {
+      updatedList = updatedList.filter(
+        (item) =>
+          item.persionName
+            .toLowerCase()
+            .search(searchInput.toLowerCase().trim()) !== -1
+      );
+    }
+    // sort Filter
+    if (selectedSortValue === "hieghst") {
+      updatedList = [...updatedList].sort((a, b) => b.price - a.price);
+    } else if (selectedSortValue === "lowest") {
+      updatedList = [...updatedList].sort((a, b) => a.price - b.price);
+    }
+    // Cuisine Filter
+    const cuisinesChecked = cuisines
+      .slice(0, 4)
+      .filter((item) => item.checked)
+      .map((item) => item.label);
+    const cuisinesColorChecked = cuisines
+      .slice(4, 8)
+      .filter((item) => item.checked)
+      .map((item) => item.label);
+
+    if (cuisinesChecked.length) {
+      updatedList = updatedList.filter((item) =>
+        cuisinesChecked.includes(item.cuisine)
+      );
+    }
+    if (cuisinesColorChecked.length) {
+      updatedList = updatedList.filter((item) =>
+        cuisinesColorChecked.includes(item.cuisineColor)
+      );
+    }
+    // Price Filter
+    const minPrice = selectedPrice[0];
+    const maxPrice = selectedPrice[1];
+
+    updatedList = updatedList.filter(
+      (item) => item.price >= minPrice && item.price <= maxPrice
+    );
+    setProductsData(updatedList);
+    !updatedList.length ? setResultsFound(false) : setResultsFound(true);
+  };
+
   useEffect(() => {
     setProductsData(products);
   }, []);
+
+  useEffect(() => {
+    applyFilters();
+  }, [searchInput, cuisines, selectedPrice, selectedSortValue]);
 
   return (
     <>
@@ -65,10 +119,15 @@ const Home = () => {
         changePrice={handleChangePrice}
         isOpenSort={isOpenSort}
         setIsOpenSort={() => setIsOpenSort(false)}
+        value={searchInput}
+        changeInput={(e) => setSearchInput(e.target.value)}
       />
-      <Layout>
+      <Layout
+        value={searchInput}
+        changeInput={(e) => setSearchInput(e.target.value)}
+      >
         {/* Header */}
-        <Header text="صفحه اصلی">
+        <Heade text="صفحه اصلی">
           <button onClick={() => setIsOpenSearch(true)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -83,12 +142,12 @@ const Home = () => {
               />
             </svg>
           </button>
-        </Header>
+        </Heade>
 
         {/* dark mode */}
         <DarkMode />
 
-        <main className="dark:bg-slate-800 dark:text-white transition-all duration-200 2xl:container 2xl:max-w-screen-2xl mx-auto">
+        <main className="dark:bg-slate-800 dark:text-white transition-all flex-1 duration-200 2xl:container 2xl:max-w-screen-2xl mx-auto">
           {/* button filter and sort in mobile size */}
           <div className="w-full md:hidden flex gap-x-2 justify-center items-center py-2 px-4">
             <ButtonSortAndFilter
@@ -141,6 +200,9 @@ const Home = () => {
                 selectedPrice={selectedPrice}
                 changePrice={handleChangePrice}
               />
+              <div className="w-full flex justify-center items-center overflow-hidden rounded-lg mt-3">
+                <img src={baner} alt="baner" />
+              </div>
             </div>
             <div className="w-full md:w-5/6 h-full flex justify-center md:flex-col md:justify-start items-center md:py-5 md:pr-5">
               {/* sort */}
@@ -149,7 +211,13 @@ const Home = () => {
                 selectSortValue={handleSelectSortValue}
               />
               {/* productList */}
-                <ProductList data={productsData}/>
+              {resultsFound ? (
+                <ProductList data={productsData} />
+              ) : (
+                <h2 className="text-center dark:text-gray-400 font-bold text-slate-700 mt-5 text-xl">
+                  محصولی یافت نشد:(
+                </h2>
+              )}
             </div>
           </div>
         </main>

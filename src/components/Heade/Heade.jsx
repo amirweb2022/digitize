@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-const Header = ({ children, text }) => {
+const Heade = ({ children, text }) => {
   return (
     <div className="w-full flex justify-center items-center px-4 dark:bg-slate-800 transition-all duration-200 py-2 md:hidden">
       <div className="flex justify-between items-center w-full">
@@ -48,4 +48,4 @@ const Header = ({ children, text }) => {
   );
 };
 
-export default Header;
+export default Heade;

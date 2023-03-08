@@ -16,6 +16,8 @@ const Popup = ({
   selectSortValue,
   isOpenSort,
   setIsOpenSort,
+  value,
+  changeInput,
 }) => {
   return (
     <>
@@ -25,7 +27,7 @@ const Popup = ({
           isOpenSearch ? "flex" : "hidden"
         }`}
       >
-        <SearchBar />
+        <SearchBar value={value} changeInput={changeInput} />
         <Button close={setIsOpenSearch} cancellation="بستن" />
       </section>
       {/* filter popup */}
@@ -46,14 +48,17 @@ const Popup = ({
             changePrice={changePrice}
           />
           <div className="w-full flex justify-between items-center">
-            <button className="w-1/2 bg-orange-500 text-white rounded-md py-3 text-lg">
+            <button
+              className="w-1/2 bg-orange-500 text-white rounded-md py-3 text-lg"
+              onClick={setIsOpenFilter}
+            >
               فیلتر
             </button>
             <button
               onClick={setIsOpenFilter}
               className="w-1/2 bg-transparent border-2 border-orange-600 text-orange-600 rounded-md py-3 text-lg mr-2"
             >
-              لغو فیلتر
+              بستن
             </button>
           </div>
         </div>
