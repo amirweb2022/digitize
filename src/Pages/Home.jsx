@@ -147,7 +147,7 @@ const Home = () => {
         {/* dark mode */}
         <DarkMode />
 
-        <main className="dark:bg-slate-800 dark:text-white transition-all flex-1 duration-200 2xl:container 2xl:max-w-screen-2xl mx-auto">
+        <main className="dark:bg-slate-800 mb-3 dark:text-white transition-all duration-200 2xl:container 2xl:max-w-screen-2xl mx-auto">
           {/* button filter and sort in mobile size */}
           <div className="w-full md:hidden flex gap-x-2 justify-center items-center py-2 px-4">
             <ButtonSortAndFilter
