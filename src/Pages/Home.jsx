@@ -7,9 +7,11 @@ import FilterPanel from "../components/FilterPanel/FilterPanel";
 import SortProduct from "../components/SortProduct/SortProduct";
 import Layout from "../Layout/Layout";
 import ProductList from "../components/ProductList/ProductList";
-import baner from "../assets/images/iphone-14-1-d.jpg"
+import baner from "../assets/images/iphone-14-1-d.jpg";
 import { products } from "../data";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const navigate = useNavigate();
   const [productsData, setProductsData] = useState([]);
   const [resultsFound, setResultsFound] = useState(true);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
@@ -46,6 +48,11 @@ const Home = () => {
 
   const handleChangePrice = (event, value) => {
     setSelectedPrice(value);
+  };
+
+  const changeInputHandler = (e) => {
+    setSearchInput(e.target.value);
+    navigate("/");
   };
 
   const applyFilters = () => {
@@ -120,12 +127,9 @@ const Home = () => {
         isOpenSort={isOpenSort}
         setIsOpenSort={() => setIsOpenSort(false)}
         value={searchInput}
-        changeInput={(e) => setSearchInput(e.target.value)}
+        changeInput={changeInputHandler}
       />
-      <Layout
-        value={searchInput}
-        changeInput={(e) => setSearchInput(e.target.value)}
-      >
+      <Layout value={searchInput} changeInput={changeInputHandler}>
         {/* Header */}
         <Heade text="صفحه اصلی">
           <button onClick={() => setIsOpenSearch(true)}>
