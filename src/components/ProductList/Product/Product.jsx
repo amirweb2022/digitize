@@ -7,21 +7,20 @@ const Product = ({ item, key }) => {
     >
       <div className="w-full flex justify-center items-center dark:bg-slate-600 bg-gray-200 rounded-xl py-2">
         <Link to={`/singleProduct/${item.id}`}>
-          <img
-            src={item.image}
-            alt={item.persionName}
-            className="w-56 h-56"
-          />
+          <img src={item.image} alt={item.persionName} className="w-56 h-56" />
         </Link>
       </div>
       <div className="w-full py-3 px-1 mt-2 flex justify-between items-center">
-        <div className="text-gray-300 font-medium text-sm dark:text-gray-500">{item.category}</div>
+        <div className="text-gray-300 font-medium text-sm dark:text-gray-500">
+          {item.category}
+        </div>
         <div className="flex justify-center items-center">
           {item.colors.map((color, index) => {
             return (
               <Link
                 to={`/?color=${color}`}
-                className={`shadow-md w-5 h-5 mr-1 flex justify-center items-center rounded-full bg-${color} focus:ring-2 focus:ring-${color} focus:ring-offset-2 focus:ring-offset-white`}
+                key={index}
+                className={`shadow-md w-5 h-5 mr-1 flex justify-center items-center rounded-full ${color} focus:ring-1 focus:ring-blue-200 focus:ring-offset-2 focus:ring-offset-white`}
               ></Link>
             );
           })}

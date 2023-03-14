@@ -2,7 +2,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import Button from "../../common/ButtonCloseSearchBar";
 import Accordion from "../Accordion/Acordion";
 import SortToggle from "../SortToggle/SortToggle";
-import { sortList } from "../../data";
+import { sortList } from "../../assets/data";
 const Popup = ({
   isOpenSearch,
   setIsOpenSearch,

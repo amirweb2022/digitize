@@ -1,3 +1,4 @@
+import products from "../assets/data";
 import { useEffect, useState } from "react";
 import DarkMode from "../components/DarkMode/DarkMode";
 import Heade from "../components/Heade/Heade";
@@ -8,7 +9,6 @@ import SortProduct from "../components/SortProduct/SortProduct";
 import Layout from "../Layout/Layout";
 import ProductList from "../components/ProductList/ProductList";
 import baner from "../assets/images/iphone-14-1-d.jpg";
-import { products } from "../data";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
@@ -197,7 +197,7 @@ const Home = () => {
           {/* main data */}
           <div className="w-full flex justify-center items-center md:px-5 2xl:px-3 dark:bg-slate-800 md:flex md:justify-between md:items-start">
             {/* filter panel */}
-            <div className="w-1/6 h-full py-5 sticky top-16 hidden md:block">
+            <div className="lg:w-1/6 md:w-1/4 h-full py-5 sticky top-16 hidden md:block">
               <FilterPanel
                 cuisines={cuisines}
                 changeChecked={handleChangeChecked}
@@ -208,7 +208,7 @@ const Home = () => {
                 <img src={baner} alt="baner" />
               </div>
             </div>
-            <div className="w-full md:w-5/6 h-full flex justify-center md:flex-col md:justify-start items-center md:py-5 md:pr-5">
+            <div className="w-full md:w-10/12 lg:w-5/6 h-full flex justify-center md:flex-col md:justify-start items-center md:py-5 md:pr-5">
               {/* sort */}
               <SortProduct
                 selectedSortValue={selectedSortValue}

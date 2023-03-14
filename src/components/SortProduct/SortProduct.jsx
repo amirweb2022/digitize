@@ -1,8 +1,8 @@
 import SortToggle from "../SortToggle/SortToggle";
-import { sortList } from "../../data";
+import { sortList } from "../../assets/data";
 const SortProduct = ({ selectedSortValue, selectSortValue }) => {
   return (
-    <div className="w-full dark:bg-gray-600 bg-stone-50 shadow-md px-3 py-2 rounded-md hidden md:flex justify-start items-center">
+    <div className="w-full dark:bg-slate-700 bg-stone-50 shadow-md px-3 py-2 rounded-md hidden md:flex justify-start items-center">
       <div className="flex justify-center items-center bg-blue-400 p-2 rounded-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
