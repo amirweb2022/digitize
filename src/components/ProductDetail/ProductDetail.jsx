@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, useSearchParams } from "react-router-dom";
 import { useCartActions } from "../../context/Cart/CartProvider";
+import toast from "react-hot-toast";
 import Tab from "../Tab/Tab";
 const ProductDetail = ({ product }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -43,9 +44,9 @@ const ProductDetail = ({ product }) => {
           image,
         },
       });
-      alert("added");
+      toast.success(`محصول ${persionName} به سبد خرید اضافه شد`);
     } else {
-      alert("no");
+      toast.error("لطفا رنگ مورد نظر را انتخاب کنید");
     }
   };
   return (

@@ -43,8 +43,16 @@ const SigleProduct = () => {
 
       {/* forward Link  in mobile */}
       <ForwardLinkSection>
-        <ForwardLink href="/singleProduct" text="خانه" />
-        <ForwardLink href="/shop" text="فروشگاه" />
+        <ForwardLink href="/" text="خانه" />
+        <ForwardLink
+          href={`/?category=${product.category}`}
+          text={product.category}
+        />
+        <ForwardLink href={`/?brand=${product.brand}`} text={product.cuisine} />
+        <ForwardLink
+          href={`/singleProduct/${product.id}`}
+          text={product.persionName.substring(0, 5)}
+        />
       </ForwardLinkSection>
 
       <main className="dark:bg-slate-800 mb-3 dark:text-white transition-all duration-200 2xl:container 2xl:max-w-screen-2xl mx-auto">
@@ -79,8 +87,19 @@ const SigleProduct = () => {
           <div className="w-full md:w-10/12 lg:w-5/6 h-full flex justify-center md:flex-col md:justify-start items-center md:py-5 md:pr-5">
             {/* Forward Link */}
             <div className="w-full dark:bg-slate-700 bg-stone-50 shadow-md px-4 py-3 rounded-md hidden md:flex justify-start items-center">
-              <ForwardLink href="/singleProduct" text="خانه" />
-              <ForwardLink href="/shop" text="فروشگاه" />
+              <ForwardLink href="/" text="خانه" />
+              <ForwardLink
+                href={`/?category=${product.category}`}
+                text={product.category}
+              />
+              <ForwardLink
+                href={`/?brand=${product.brand}`}
+                text={product.cuisine}
+              />
+              <ForwardLink
+                href={`/singleProduct/${product.id}`}
+                text={product.persionName}
+              />
             </div>
             {/* productDetail */}
             <ProductDetail product={product} />
