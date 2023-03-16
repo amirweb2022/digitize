@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
+import { useCart } from "../../context/Cart/CartProvider";
 import SearchBar from "../SearchBar/SearchBar";
 
 const Navigation = ({ value, changeInput }) => {
+  const { cart } = useCart();
   const nav__link = [
     {
       to: "/",
@@ -53,7 +55,7 @@ const Navigation = ({ value, changeInput }) => {
           />
         </svg>
       ),
-      count: "0",
+      count: `${cart.length}`,
     },
     {
       to: "/auth",

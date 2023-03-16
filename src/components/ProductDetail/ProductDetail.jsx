@@ -1,7 +1,11 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
+import { useCartActions } from "../../context/Cart/CartProvider";
 import Tab from "../Tab/Tab";
 const ProductDetail = ({ product }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const dispatch = useCartActions();
+  const colorQuery = searchParams.get("color") || "";
   const [tab, setTab] = useState("designing");
   const button = [
     { text: "دوربین", value: "camera" },
@@ -27,6 +31,23 @@ const ProductDetail = ({ product }) => {
     imageDetailProduct,
     image,
   } = product;
+  const addToCart = () => {
+    if (colorQuery) {
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: {
+          id,
+          persionName,
+          price,
+          color: colorQuery,
+          image,
+        },
+      });
+      alert("added");
+    } else {
+      alert("no");
+    }
+  };
   return (
     <div className="w-full md:bg-white rounded-md mt-2 md:dark:bg-slate-700 md:mt-4 px-3 md:px-0 flex justify-center items-center flex-col overflow-hidden">
       <div className="flex flex-col justify-center md:justify-between lg:flex-row items-start lg:p-5 w-full">
@@ -81,6 +102,7 @@ const ProductDetail = ({ product }) => {
           warranty={warranty}
           postedBy={postedBy}
           price={price}
+          onClick={addToCart}
         />
       </div>
       {/* review */}
@@ -115,6 +137,9 @@ const ProductDetail = ({ product }) => {
         </div>
         <div className="hidden md:flex justify-center items-center flex-col gap-y-4">
           <Description title="طراحی">{designing}</Description>
+          <div className="w-full flex justify-center items-center">
+            <img src={imageDetailProduct} alt={persionName} />
+          </div>
           <Description title="دوربین">{camera}</Description>
           <Description title="باتری">{battery}</Description>
         </div>
@@ -255,7 +280,7 @@ export const DetailProduct = ({ productFeatures }) => {
     </div>
   );
 };
-export const CartSummery = ({ seller, warranty, postedBy, price }) => {
+export const CartSummery = ({ seller, warranty, postedBy, price, onClick }) => {
   return (
     <div className="w-full md:w-full lg:w-1/4 flex bg-transparent justify-center items-center md:p-3 lg:p-0">
       <div className="bg-stone-100 dark:bg-slate-700 dark:md:bg-slate-800 w-full h-full flex justify-start items-start flex-col gap-y-4 py-4 px-3 rounded-md">
@@ -344,7 +369,10 @@ export const CartSummery = ({ seller, warranty, postedBy, price }) => {
           <span className="mr-2">تومان</span>
         </div>
         <div className="w-full">
-          <button className="w-full bg-orange-600 text-white py-3 rounded-md">
+          <button
+            className="w-full bg-orange-600 text-white py-3 rounded-md"
+            onClick={onClick}
+          >
             اضافه به سبد خرید
           </button>
         </div>
