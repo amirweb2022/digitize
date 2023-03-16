@@ -1,7 +1,11 @@
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Routers from "./routers/Routers"
 const App = () => {
   return (
-    <Routers />
+    <>
+      <ScrollToTop />
+      <Routers />
+    </>
   );
 }
 

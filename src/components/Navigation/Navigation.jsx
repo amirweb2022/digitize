@@ -73,7 +73,7 @@ const Navigation = ({ value, changeInput }) => {
   return (
     <>
       {/* navigation in mobile size */}
-      <header className="fixed bottom-0 dark:bg-slate-800 transition-all duration-200 bg-white rounded-tr-2xl rounded-tl-2xl shadow-slate-600 shadow-md px-3 py-4 w-full md:hidden">
+      <header className="fixed bottom-0 z-10 dark:bg-slate-800 transition-all duration-200 bg-white rounded-tr-2xl rounded-tl-2xl shadow-slate-600 shadow-md px-3 py-4 w-full md:hidden">
         <nav>
           <ul className="flex justify-around items-center">
             {nav__link.map((nav, index) => {
