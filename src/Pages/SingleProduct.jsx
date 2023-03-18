@@ -16,7 +16,7 @@ const SigleProduct = () => {
   const navigate = useNavigate();
   return (
     <Layout changeInput={() => navigate("/")}>
-      {/* Header */}
+      {/* Heade */}
       <Heade text={product.persionName.substring(0, 20)}>
         <button
           onClick={(e) => {
@@ -117,8 +117,8 @@ export const ForwardLink = ({ href, text }) => {
       to={href}
       className={(navClass) =>
         navClass.isActive
-          ? "flex justify-center items-center text-orange-500 text-base font-bold"
-          : "flex justify-center items-center text-slate-700 dark:text-gray-400 text-base "
+          ? "flex justify-center items-center text-orange-500 text-sm font-bold"
+          : "flex justify-center items-center text-slate-700 dark:text-gray-400 text-sm"
       }
     >
       <span>{text}</span>

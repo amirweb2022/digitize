@@ -27,21 +27,21 @@ const decrementProductFromCart = (state, payload) => {
     const updatedItemIndex = updatedCart.findIndex(
         (item) => item.id === payload.id
     );
-    const updatedSizeIndex = updatedCart.findIndex(
-        (item) => item.size === payload.size
+    const updatedColorIndex = updatedCart.findIndex(
+        (item) => item.color === payload.color
     );
-    const updatedItem = { ...updatedCart[updatedItemIndex || updatedSizeIndex] };
+    const updatedItem = { ...updatedCart[updatedItemIndex || updatedColorIndex] };
     if (updatedItem.quantity === 1) {
         const filteredCartWithId = updatedCart.filter((item) => item.id !== payload.id);
-        const filteredCartWithSize = updatedCart.filter((item) => item.size !== payload.size);
+        const filteredCartWithColor = updatedCart.filter((item) => item.color !== payload.color);
         return {
             ...state,
-            cart: filteredCartWithId && filteredCartWithSize,
+            cart: filteredCartWithId && filteredCartWithColor,
             total: state.total - payload.price,
         };
     } else {
         updatedItem.quantity--;
-        updatedCart[updatedItemIndex || updatedSizeIndex] = updatedItem;
+        updatedCart[updatedItemIndex || updatedColorIndex] = updatedItem;
         return {
             ...state,
             cart: updatedCart,
@@ -55,16 +55,16 @@ const removeProductFromCart = (state, payload) => {
     const updatedItemIndex = updatedCart.findIndex(
         (item) => item.id === payload.id
     );
-    const updatedSizeIndex = updatedCart.findIndex(
-        (item) => item.size === payload.size
+    const updatedColorIndex = updatedCart.findIndex(
+        (item) => item.color === payload.color
     );
-    const updatedItem = { ...updatedCart[updatedItemIndex || updatedSizeIndex] };
+    const updatedItem = { ...updatedCart[updatedItemIndex || updatedColorIndex] };
     if (updatedItem.quantity) {
         const filteredCartWithId = updatedCart.filter((item) => item.id !== payload.id);
-        const filteredCartWithSize = updatedCart.filter((item) => item.size !== payload.size);
+        const filteredCartWithColor = updatedCart.filter((item) => item.color !== payload.color);
         return {
             ...state,
-            cart: filteredCartWithId && filteredCartWithSize,
+            cart: filteredCartWithId && filteredCartWithColor,
             total: state.total - payload.price * payload.quantity,
         };
     }

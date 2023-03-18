@@ -98,7 +98,7 @@ const ProductDetail = ({ product }) => {
             <DetailProduct productFeatures={productFeatures} />
           </div>
         </div>
-        <CartSummery
+        <BuyProduct
           seller={seller}
           warranty={warranty}
           postedBy={postedBy}
@@ -281,7 +281,7 @@ export const DetailProduct = ({ productFeatures }) => {
     </div>
   );
 };
-export const CartSummery = ({ seller, warranty, postedBy, price, onClick }) => {
+export const BuyProduct = ({ seller, warranty, postedBy, price, onClick }) => {
   return (
     <div className="w-full md:w-full lg:w-1/4 flex bg-transparent justify-center items-center md:p-3 lg:p-0">
       <div className="bg-stone-100 dark:bg-slate-700 dark:md:bg-slate-800 w-full h-full flex justify-start items-start flex-col gap-y-4 py-4 px-3 rounded-md">

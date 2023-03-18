@@ -9,9 +9,10 @@ import SortProduct from "../components/SortProduct/SortProduct";
 import Layout from "../Layout/Layout";
 import ProductList from "../components/ProductList/ProductList";
 import baner from "../assets/images/iphone-14-1-d.jpg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [productsData, setProductsData] = useState([]);
   const [resultsFound, setResultsFound] = useState(true);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
@@ -55,8 +56,13 @@ const Home = () => {
     navigate("/");
   };
 
+  const brandQuery = searchParams.get("brand") || "";
+
   const applyFilters = () => {
     let updatedList = products;
+    if (brandQuery !== "") {
+      updatedList = updatedList.filter((item) => item.brand === brandQuery);
+    }
     // Search Filter
     if (searchInput) {
       updatedList = updatedList.filter(
@@ -102,10 +108,6 @@ const Home = () => {
     setProductsData(updatedList);
     !updatedList.length ? setResultsFound(false) : setResultsFound(true);
   };
-
-  useEffect(() => {
-    setProductsData(products);
-  }, []);
 
   useEffect(() => {
     applyFilters();
