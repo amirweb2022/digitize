@@ -1,9 +1,29 @@
 import { NavLink } from "react-router-dom";
 import { useCart } from "../../context/Cart/CartProvider";
 import SearchBar from "../SearchBar/SearchBar";
-
+import { useAuth } from "../../context/Auth/AuthProvider";
+import Box from "@mui/material/Box";
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+import Avatar from "@mui/material/Avatar";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { useState } from "react";
+import userLogo from "../../assets/images/2.jpg";
 const Navigation = ({ value, changeInput }) => {
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+  const clickHandler = () => {
+    localStorage.removeItem("authState");
+    window.location.reload();
+  };
   const { cart } = useCart();
+  const userData = useAuth();
   const nav__link = [
     {
       to: "/",
@@ -57,20 +77,6 @@ const Navigation = ({ value, changeInput }) => {
       ),
       count: `${cart.length}`,
     },
-    {
-      to: "/auth",
-      text: "ورود/عضویت",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          className="w-6 h-6"
-          viewBox="0 0 24 24"
-        >
-          <path d="M6.25 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0zm-3 12.75a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 0 0-1.5 0v2.25H16a.75.75 0 0 0 0 1.5h2.25v2.25a.75.75 0 0 0 1.5 0v-2.25H22a.75.75 0 0 0 0-1.5h-2.25V7.5z" />
-        </svg>
-      ),
-    },
   ];
   return (
     <>
@@ -85,8 +91,8 @@ const Navigation = ({ value, changeInput }) => {
                     to={nav.to}
                     className={(navClass) =>
                       navClass.isActive
-                        ? "flex justify-center items-center text-slate-800 font-bold dark:text-orange-400"
-                        : "flex justify-center items-center text-gray-500 text-lg"
+                        ? "justify-center items-center text-slate-800 font-bold dark:text-orange-400 flex"
+                        : "justify-center items-center text-gray-500 text-lg flex"
                     }
                   >
                     <span>{nav.icon}</span>
@@ -109,6 +115,71 @@ const Navigation = ({ value, changeInput }) => {
                 </li>
               );
             })}
+            <li>
+              {userData ? (
+                <Box sx={{ flexGrow: 0 }}>
+                  <Tooltip title="Open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <Avatar alt="Remy Sharp" src={userLogo} />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    sx={{ mt: "-45px" }}
+                    className="md:hidden"
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <p textAlign="center">{userData.name}</p>
+                    </MenuItem>
+                    <MenuItem onClick={clickHandler}>
+                      <p textAlign="center" className="text-red-400">
+                        خروج
+                      </p>
+                    </MenuItem>
+                  </Menu>
+                </Box>
+              ) : (
+                <NavLink
+                  to="/auth"
+                  className={(navClass) =>
+                    navClass.isActive
+                      ? "justify-center items-center text-slate-800 font-bold dark:text-orange-400 flex"
+                      : "justify-center items-center text-gray-500 text-lg flex"
+                  }
+                >
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      className="w-6 h-6"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M6.25 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0zm-3 12.75a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 0 0-1.5 0v2.25H16a.75.75 0 0 0 0 1.5h2.25v2.25a.75.75 0 0 0 1.5 0v-2.25H22a.75.75 0 0 0 0-1.5h-2.25V7.5z" />
+                    </svg>
+                  </span>
+                  <NavLink
+                    to="/auth"
+                    className={(navClass) =>
+                      navClass.isActive ? "mr-2 mt-1" : "mr-2 mt-1 hidden"
+                    }
+                  >
+                    <span>ورود/عضویت</span>
+                  </NavLink>
+                </NavLink>
+              )}
+            </li>
           </ul>
         </nav>
       </header>
@@ -150,6 +221,54 @@ const Navigation = ({ value, changeInput }) => {
                   </li>
                 );
               })}
+              <li>
+                {userData ? (
+                  <Box sx={{ flexGrow: 0 }}>
+                    <Tooltip title="Open settings">
+                      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        <Avatar alt="Remy Sharp" src={userLogo} />
+                      </IconButton>
+                    </Tooltip>
+                    <Menu
+                      sx={{ mt: "45px" }}
+                      id="menu-appbar"
+                      className="hidden md:block"
+                      anchorEl={anchorElUser}
+                      anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                      keepMounted
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                      open={Boolean(anchorElUser)}
+                      onClose={handleCloseUserMenu}
+                    >
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <p textAlign="center">{userData.name}</p>
+                      </MenuItem>
+                      <MenuItem onClick={clickHandler}>
+                        <p textAlign="center" className="text-red-400">
+                          خروج
+                        </p>
+                      </MenuItem>
+                    </Menu>
+                  </Box>
+                ) : (
+                  <NavLink
+                    to="/auth"
+                    className={(navClass) =>
+                      navClass.isActive
+                        ? "inline-block bg-orange-600 text-white py-2 px-3 rounded-md font-bold"
+                        : "inline-block hover:bg-orange-600 text-slate-800 dark:text-gray-200 hover:text-white hover:py-1 hover:px-3 rounded-md duration-150 transition-all"
+                    }
+                  >
+                    ورود/عضویت
+                  </NavLink>
+                )}
+              </li>
             </ul>
           </div>
           <SearchBar value={value} changeInput={changeInput} />

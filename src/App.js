@@ -2,14 +2,17 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import CartProvider from "./context/Cart/CartProvider";
 import Routers from "./routers/Routers"
 import { Toaster } from 'react-hot-toast';
+import AuthProvider from "./context/Auth/AuthProvider";
 const App = () => {
   return (
     <>
       <ScrollToTop />
-      <CartProvider>
-        <Toaster />
-        <Routers />
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <Toaster />
+          <Routers />
+        </CartProvider>
+      </AuthProvider>
     </>
   );
 }
