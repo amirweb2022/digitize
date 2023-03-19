@@ -4,6 +4,7 @@ import Category from "../Pages/Category";
 import Home from "../Pages/Home";
 import SingleProduct from "../Pages/SingleProduct";
 import Auth from "../Pages/AuthPage";
+import Checkout from "../Pages/Checkout";
 const Routers = () => {
     return (
         <Routes>
@@ -12,6 +13,7 @@ const Routers = () => {
             <Route path="/" element={<Home />} />
             <Route path="/category" element={<Category />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/auth/checkout" element={<Checkout />} />
         </Routes>
     );
 }

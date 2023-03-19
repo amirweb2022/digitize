@@ -118,7 +118,7 @@ const Navigation = ({ value, changeInput }) => {
             <li>
               {userData ? (
                 <Box sx={{ flexGrow: 0 }}>
-                  <Tooltip title="Open settings">
+                  <Tooltip title="پنل کاربر">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                       <Avatar alt="Remy Sharp" src={userLogo} />
                     </IconButton>
@@ -224,7 +224,7 @@ const Navigation = ({ value, changeInput }) => {
               <li>
                 {userData ? (
                   <Box sx={{ flexGrow: 0 }}>
-                    <Tooltip title="Open settings">
+                    <Tooltip title="پنل کاربر">
                       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                         <Avatar alt="Remy Sharp" src={userLogo} />
                       </IconButton>
