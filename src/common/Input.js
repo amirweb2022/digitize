@@ -7,7 +7,7 @@ const Input = ({ label, name, formik, placeholder, type = "text" }) => {
                 type={type}
                 {...formik.getFieldProps(name)}
                 name={name}
-                className="bg-stone-100 dark:bg-slate-700 dark:border-gray-300 dark:text-gray-300 dark:shadow-none w-full my-2 p-2 outline-none transition-all duration-150 rounded-md text-slate-600 placeholder:text-sm border-[1px] border-slate-300 focus:border-orange-500 focus:shadow-md focus:shadow-stone-300 hover:border-orange-500 hover:shadow-md focus:shadow-stone-300"
+                className="bg-stone-100 dark:bg-slate-700 dark:border-gray-300 dark:text-gray-300 dark:shadow-none w-full my-2 p-2 outline-none transition-all duration-150 rounded-md text-slate-600 placeholder:text-sm border-[1px] border-slate-300 focus:border-orange-500 focus:shadow-md focus:shadow-stone-300 hover:border-orange-500 hover:shadow-md"
                 placeholder={placeholder}
             />
             {formik.errors[name] && formik.touched[name] && (
